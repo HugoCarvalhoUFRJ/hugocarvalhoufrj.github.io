@@ -1,9 +1,8 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-*.Rproj
-
+# system files
 .DS_Store
-/.quarto/
-/_site/
+Thumbs.db
+desktop.ini
+
+# local Claude Code notes (not published on the site)
+CLAUDE.md
+.claude/

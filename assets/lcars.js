@@ -3,9 +3,6 @@
 (function () {
   "use strict";
 
-  var reduceMotion = window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   /* ---- stardate (a playful, made-up formula) ---- */
   function stardate(d) {
     var epoch = Date.UTC(1987, 8, 28); // TNG premiere, as a nod
@@ -29,36 +26,6 @@
       day = p(rio.getUTCDate()) + "/" + p(rio.getUTCMonth() + 1) + "/" + rio.getUTCFullYear();
     }
     sd.textContent = "Stardate " + stardate(now) + " · " + day;
-  }
-
-  /* ---- number cascade ---- */
-  var box = document.querySelector(".data-cascade");
-  if (box) {
-    var COLS = 7, ROWS = 6, cells = [];
-    var tones = ["d1", "d1", "d2", "d3", "d4", "d5"];
-    var rnd = function (n) { return Math.floor(Math.random() * n); };
-    var num = function () {
-      var digits = 2 + rnd(5);
-      var s = String(rnd(Math.pow(10, digits)));
-      while (s.length < digits) s = "0" + s;
-      return rnd(5) === 0 ? s.slice(0, 2) + "-" + s.slice(2) : s;
-    };
-    for (var i = 0; i < COLS * ROWS; i++) {
-      var span = document.createElement("span");
-      span.textContent = num();
-      span.className = tones[rnd(tones.length)];
-      box.appendChild(span);
-      cells.push(span);
-    }
-    if (!reduceMotion) {
-      setInterval(function () {
-        for (var k = 0; k < 3; k++) {
-          var c = cells[rnd(cells.length)];
-          c.textContent = num();
-          c.className = tones[rnd(tones.length)];
-        }
-      }, 160);
-    }
   }
 
   /* ---- email: assembled only on request, never written in the HTML ---- */

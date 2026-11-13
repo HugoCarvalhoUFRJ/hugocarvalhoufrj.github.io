@@ -34,7 +34,7 @@
 }
 
 /* condensed LCARS face for the interface; Barlow for everything people read */
-.skip, .block, .bar > *, .title, .data-cascade, .nav a, .content h1, .content h2,
+.skip, .block, .bar > *, .title, .nav a, .content h1, .content h2,
 .content h3, .content .lede, .subnav a, .pill, .btn, .refs .yr, .log dt, .card .when {
   font-family: var(--font-ui);
   font-weight: 500;
@@ -175,25 +175,6 @@ a:hover { color: var(--peach); }
   font-size: 0.85rem;
   letter-spacing: 0.14em;
 }
-
-/* decorative number cascade */
-.data-cascade {
-  display: grid;
-  grid-template-columns: repeat(7, auto);
-  gap: 0 20px;
-  font-size: 0.82rem;
-  line-height: 1.45;
-  letter-spacing: 0.06em;
-  align-self: center;
-  user-select: none;
-  font-variant-numeric: tabular-nums;
-}
-.data-cascade span { text-align: right; transition: color 0.4s; }
-.data-cascade .d1 { color: var(--orange); }
-.data-cascade .d2 { color: var(--peach); }
-.data-cascade .d3 { color: var(--sky); }
-.data-cascade .d4 { color: var(--lilac); }
-.data-cascade .d5 { color: #fff; }
 
 /* ---------- main panel ---------- */
 
@@ -611,13 +592,6 @@ a.yt .play {
 
 /* ---------- responsive ---------- */
 
-@media (max-width: 1000px) {
-  .data-cascade { grid-template-columns: repeat(4, auto); }
-  .data-cascade span:nth-child(7n+5),
-  .data-cascade span:nth-child(7n+6),
-  .data-cascade span:nth-child(7n) { display: none; }
-}
-
 @media (max-width: 760px) {
   :root {
     --side: 30px;
@@ -632,7 +606,6 @@ a.yt .play {
 
   .panel-top .side .block { font-size: 0; min-height: 1.6rem; padding: 0; }
   .panel-top .side .block:first-child { border-top-left-radius: 15px; }
-  .data-cascade { display: none; }
   .head { padding-left: var(--pad); }
   .bar > * { font-size: 0.62rem; padding: 0 6px; }
   .bar .hide-sm { display: none; }

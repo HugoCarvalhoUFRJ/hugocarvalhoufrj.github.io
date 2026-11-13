@@ -15,8 +15,20 @@
   var sd = document.getElementById("stardate");
   if (sd) {
     var now = new Date();
-    var iso = now.toISOString().slice(0, 10);
-    sd.textContent = "Stardate " + stardate(now) + " · " + iso;
+    var day;
+    try {
+      // always the calendar date in Rio de Janeiro, as DD/MM/YYYY
+      day = new Intl.DateTimeFormat("pt-BR", {
+        timeZone: "America/Sao_Paulo",
+        day: "2-digit", month: "2-digit", year: "numeric"
+      }).format(now);
+    } catch (e) {
+      // no Intl time-zone support: Rio is UTC-3 (no DST since 2019)
+      var rio = new Date(now.getTime() - 3 * 36e5);
+      var p = function (n) { return (n < 10 ? "0" : "") + n; };
+      day = p(rio.getUTCDate()) + "/" + p(rio.getUTCMonth() + 1) + "/" + rio.getUTCFullYear();
+    }
+    sd.textContent = "Stardate " + stardate(now) + " · " + day;
   }
 
   /* ---- number cascade ---- */

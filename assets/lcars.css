@@ -604,6 +604,7 @@ a.yt .play {
   padding: 4px 4px 18px 18px;
 }
 .app h3 { margin: 0; color: var(--c, var(--blue)); }
+.app h3 .lang { margin-left: 6px; vertical-align: 0.2em; }
 .app .tagline { margin: 0; color: var(--peach); font-style: italic; }
 .app p { margin: 0; }
 .app .btn { align-self: flex-start; margin-top: auto; }
